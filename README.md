@@ -6,20 +6,20 @@
 
 ## Integrantes del Grupo
 
-| Nombre |
+| Apellido y nombre |
 |--------|
-| [Farfan, Milagros] |
-| [Alayo, Fabricio] |
-| [Carballo, Mario] |
+| Farfan, Milagros |
+| Alayo, Fabricio |
+| Carballo, Mario |
 
 
 ## Herramienta de Gestión de Proyecto
 
-**Aplicación elegida:** [Jira]
+**Aplicación elegida:** Jira
 
 ## Tablero Kanban
 
-**URL del tablero:** [https://campusmanager.atlassian.net/jira/software/projects/KAN/boards/1]
+**URL del tablero:** https://campusmanager.atlassian.net/jira/software/projects/KAN/boards/1
 
 ---
 
