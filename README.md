@@ -1,63 +1,73 @@
-# Campus Manager
+# React + TypeScript + Vite
 
-## Descripción del Proyecto
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-**Campus Manager** es un software de gestión de eventos enfocado en la Universidad Tecnológica Nacional (UTN). Esta aplicación permite coordinar, organizar y administrar eventos académicos y estudiantiles de manera eficiente, facilitando la comunicación entre estudiantes, docentes y organizadores de eventos.
+Currently, two official plugins are available:
 
-## Integrantes del Grupo
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-| Apellido y nombre |
-|--------|
-| Farfan, Milagros |
-| Alayo, Fabricio |
-| Carballo, Mario |
+## React Compiler
 
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Herramienta de Gestión de Proyecto
+## Expanding the ESLint configuration
 
-**Aplicación elegida:** Jira
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Tablero Kanban
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-**URL del tablero:** https://campusmanager.atlassian.net/jira/software/projects/KAN/boards/1
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
----
-
-## Comenzar
-
-### Requisitos Previos
-
-- Node.js (v18 o superior)
-- npm o yarn
-
-### Instalación
-
-```bash
-npm install
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### Desarrollo
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-npm run dev
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-La aplicación estará disponible en `http://localhost:5173`
-
-### Build para Producción
-
-```bash
-npm run build
-```
-
----
-
-## Información Técnica
-
-- **Frontend Framework:** React
-- **Lenguaje:** TypeScript
-- **Build Tool:** Vite
-- **Linter:** ESLint
-
----
-
